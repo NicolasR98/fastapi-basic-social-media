@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from app.routers import posts, users, auth
+
+from app.routers import auth, posts, users
 
 from .sql_app.database import engine
 from .sql_app.models import Base
