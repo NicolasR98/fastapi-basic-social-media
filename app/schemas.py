@@ -1,4 +1,5 @@
 from datetime import datetime
+from enum import IntEnum
 
 from pydantic import BaseModel, EmailStr
 
@@ -49,3 +50,21 @@ class Post(PostBase):
 
     class Config:
         orm_mode = True
+
+
+class PostOut(BaseModel):
+    Post: Post
+    votes: int
+
+    class Config:
+        orm_mode = True
+
+
+class VoteEnum(IntEnum):
+    vote = 1
+    remove_vote = 0
+
+
+class Vote(BaseModel):
+    post_id: int
+    dir: VoteEnum
